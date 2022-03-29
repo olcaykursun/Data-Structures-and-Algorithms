@@ -1,7 +1,7 @@
 /*
 Generating random binary trees
 Created on Sat Mar 26 14:19:10 2022
-@author: Dr. Olcay Kursun, Spring 2022, AUM Dept. of Computer Science
+@author: Dr. Olcay Kursun, AUM Dept. of Computer Science
 */
 
 #include <iostream>
@@ -57,10 +57,6 @@ int catalanNumber(int n)
     return res;
 }
 
-
-//for (const auto& element : key) {
-//    result = result * 31 + hasher(element);
-//}
 
 int main()
 {

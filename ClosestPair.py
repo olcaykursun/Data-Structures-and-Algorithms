@@ -4,7 +4,6 @@ Created on Sun Mar 27 16:07:13 2022
 @author: Olcay Kursun, Dept. of Computer Science, Auburn University at Montgomery
 """
 
-#test
 import numpy as np
 import time
 
@@ -14,7 +13,7 @@ def distSquare(p1, p2) :   #no need for square root all the time
     diff = p1-p2
     return np.dot(diff, diff)
     
-def bruteForceClosestDistance(arr) :   #used for large N
+def bruteForceClosestDistance(arr) :
     n = arr.shape[0]
     result = np.inf
     for i in range(0, n-1) :

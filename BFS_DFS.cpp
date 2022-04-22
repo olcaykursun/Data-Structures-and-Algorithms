@@ -25,7 +25,7 @@ struct Edge
 
 struct Vertex
 {
-    Vertex(string s, int i) : name(s) { }
+    Vertex(string s) : name(s) { }
     string name;   //every node has a name like "a", "b", "c"... 
     int vertexLabel = unlabeled_vertex;   //0 is unvisited, then it will get a positive label
     vector<Edge*> edges;    //each vertex has a vector-array of edges
@@ -124,7 +124,7 @@ vector<Vertex*> readGraph(string filename)
     for (int i = 0; i < n; i++)    //Read each node info line by line
     {
         infile >> v >> s;         //Node index and the name
-        graph.push_back(new Vertex(s, i));
+        graph.push_back(new Vertex(s));
     }
 
     infile >> s;               //Skip the line in the file that contains string "*Edges"

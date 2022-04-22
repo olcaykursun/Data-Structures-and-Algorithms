@@ -17,8 +17,8 @@ struct Vertex;
 
 struct Edge
 {
-    Edge(Vertex* v) : oppositeEndPoint(v) { }
-    Vertex* oppositeEndPoint;
+    Edge(Vertex* v) : otherEndPoint(v) { }
+    Vertex* otherEndPoint;
     EdgeLabel edgeLabel = EdgeLabel::unlabeled_edge;  //which will be changed to tree-edge or back/cross-edge
     Edge* oppositeDirection = nullptr;
 };
@@ -52,7 +52,7 @@ void bfs(vector<Vertex*>& graph, Vertex* v, int& cnt)   //algorithm is adapted f
             if (e->edgeLabel != EdgeLabel::unlabeled_edge)
                 continue; // skip the labeled edges (this can happen for undirected graphs)
 
-            Vertex* w = e->oppositeEndPoint;
+            Vertex* w = e->otherEndPoint;
             if (w->vertexLabel == unlabeled_vertex)   //if neighbor is an unvisited vertex
             {
                 cnt++;
@@ -87,7 +87,7 @@ void dfs(vector<Vertex*>& graph, Vertex* v, int& cnt)   //algorithm is adapted f
         if (e->edgeLabel != EdgeLabel::unlabeled_edge)
             continue; // skip the labeled edges (this can happen for undirected graphs)
 
-        auto& w = e->oppositeEndPoint;
+        auto& w = e->otherEndPoint;
         if (w->vertexLabel == unlabeled_vertex)          //if neighbor is an unvisited vertex
         {
             labelEdge(e, EdgeLabel::tree_edge);          //label the edge as tree edge
@@ -177,7 +177,7 @@ void printOrdering(const vector<Vertex*>& graph, string msg)
         for (auto& e : v->edges)
         {
             if (e->edgeLabel == EdgeLabel::tree_edge)
-                cout << e->oppositeEndPoint->name << " ";
+                cout << e->otherEndPoint->name << " ";
         }
         cout << "\n\n";
     }

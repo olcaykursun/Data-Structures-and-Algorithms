@@ -135,6 +135,20 @@ void printDijkstraPaths(const vector<Vertex*>& graph, string msg)
     for (const auto& v : graph)
     {
         cout << v->name << " has a path cost of " << v->finalPriority << "\n";
+        vector<string> path;
+        Vertex* w = v;
+        while (w->connectingEdge != nullptr)
+        {
+            path.push_back(w->name);
+            w = w->connectingEdge->oppositeDirection->otherEndPoint;
+        }
+
+        cout << "   The path is [" << graph[0]->name;
+        for (auto w = path.rbegin(); w != path.rend(); ++w)
+        {
+            cout << ", " << *w;
+        }
+        cout << "]\n";
     }
 }
 
@@ -158,8 +172,8 @@ int main()
     vector<Vertex*> graph;
     string filename;
 
-//    filename = "levitin_weighted.paj";    //the example on the DFS-BFS slides in Levitin's book, I added some random edge weights
-    filename = "karate_weighted.paj";  //Added random edge weights to the original at http://networkdata.ics.uci.edu/data/karate/karate.paj
+    filename = "levitin_weighted.paj";    //the example on the DFS-BFS slides in Levitin's book, I added some random edge weights
+//    filename = "karate_weighted.paj";  //Added random edge weights to the original at http://networkdata.ics.uci.edu/data/karate/karate.paj
     graph = readGraph(filename);
     printGraph(graph, "Input graph:");
 
